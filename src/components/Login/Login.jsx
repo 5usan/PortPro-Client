@@ -32,7 +32,9 @@ const Login = () => {
     navigate("/signup");
   };
 
-  const loginWithTwitter = () => {};
+  const loginWithTwitter = () => {
+    window.open("http://localhost:4000/auth/twitter", "_self");
+  };
   return (
     <div>
       <form className="form" onSubmit={submitHandler}>

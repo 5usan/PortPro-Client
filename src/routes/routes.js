@@ -1,20 +1,22 @@
-import Dashboard from "../components/Dashboard";
-import Login from "../components/Login";
-import Signup from "../components/Signup";
-
+import DashboardPage from "../pages/DashboardPage";
+import LoginPage from "../pages/LoginPage";
+import SignupPage from "../pages/SignupPage";
 const routes = [
   {
     path: "/login",
-    element: Login,
+    element: LoginPage,
   },
   {
     path: "/signup",
-    element: Signup,
-  },
-  {
-    path: "/dashboard",
-    element: Dashboard,
+    element: SignupPage,
   },
 ];
 
 export default routes;
+
+export const privateRoutes = [
+  {
+    path: "/dashboard",
+    element: DashboardPage,
+  },
+];

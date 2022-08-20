@@ -1,0 +1,14 @@
+.main{
+    width: 100%;
+}
+
+.labelCon{
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 5px 0;
+}
+
+.input{
+    height: 35px;
+    width: 100%;
+}

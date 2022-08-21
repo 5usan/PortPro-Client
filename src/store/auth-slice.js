@@ -58,14 +58,12 @@ export const sentLoginData = (data) => {
 
 export const sentSignUpData = (data) => {
   return (dispatch) => {
-    console.log("A");
     postDataWithoutToken(
       apiRoutes.signup,
       JSON.stringify(data),
       (onSuccess) => {
         console.log(onSuccess, "onSuccess");
         dispatch(authActions.signup());
-        return true;
       },
       (onFail) => {
         console.log(onFail, "onFail");

@@ -6,5 +6,5 @@ export const apiRoutes = {
   twitter: "auth/twitter",
   twitterRedirect: "auth/twitter/redirect",
   signup: "auth/signup",
-  dashboard: "/dashboard",
+  dashboard: "dashboard/",
 };

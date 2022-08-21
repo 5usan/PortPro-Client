@@ -1,36 +1,30 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { sentLoginData } from "../../store/auth-slice";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
-import { apiRoutes } from "../../config/configRoute";
 import "./Login.css";
-import { postData } from "../../services/services";
 
 const Login = () => {
-  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const submitHandler = async (e) => {
     e.preventDefault();
     const data = {
       email,
       password,
     };
-    await postData(
-      apiRoutes.login,
-      data,
-      (response) => {
-        localStorage.setItem(
-          "user",
-          JSON.stringify(response.data.payload.data)
-        );
-        navigate("/dashboard");
-      },
-      (error) => {
-        console.log(error.response.data, "failure");
-      }
-    );
+    dispatch(sentLoginData(data));
   };
+
+  if (isLoggedIn) {
+    navigate("/dashboard");
+  }
 
   const signupHandler = () => {
     navigate("/signup");

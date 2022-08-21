@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import routes, { privateRoutes } from "./routes/routes";
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  console.log(isLoggedIn, "isLoggedIn");
   return (
     <BrowserRouter>
       <Routes>

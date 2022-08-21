@@ -15,7 +15,7 @@ export function getData(link, onSuccess, onFail) {
     });
 }
 
-export function postData(link, data, onSuccess, onFail) {
+export function postDataWithoutToken(link, data, onSuccess, onFail) {
   console.log(BASE_URL + link);
   axios
     .post(BASE_URL + link, data, {

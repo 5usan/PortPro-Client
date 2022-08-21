@@ -20,7 +20,11 @@ const Login = () => {
       apiRoutes.login,
       data,
       (response) => {
-        console.log(response, "success");
+        localStorage.setItem(
+          "user",
+          JSON.stringify(response.data.payload.data)
+        );
+        navigate("/dashboard");
       },
       (error) => {
         console.log(error.response.data, "failure");

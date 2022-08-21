@@ -12,3 +12,7 @@
     height: 35px;
     width: 100%;
 }
+
+.error{
+    color: red;
+}

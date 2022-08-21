@@ -1,7 +1,7 @@
 import React from "react";
 import "./Input.css";
 
-const Input = ({ label, name, type, setValue, placeholder, value }) => {
+const Input = ({ label, name, type, setValue, placeholder, value, error }) => {
   return (
     <div className="main">
       <div className="labelCon">
@@ -20,6 +20,7 @@ const Input = ({ label, name, type, setValue, placeholder, value }) => {
           setValue(e.target.value);
         }}
       />
+      {error && <span className="error">{error}</span>}
     </div>
   );
 };

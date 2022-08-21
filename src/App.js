@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import NotFoundPage from "./pages/NotFoundPage";
 import routes, { privateRoutes } from "./routes/routes";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

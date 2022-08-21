@@ -9,7 +9,7 @@ const authSlice = createSlice({
     token: localStorage.getItem("token"),
     isLoggedIn: localStorage.getItem("isLoggedIn"),
     userData: "",
-    signupData: "",
+    isSignUped: false,
   },
   reducers: {
     login(state, action) {
@@ -26,7 +26,7 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
     },
     signup(state, action) {
-      state.signupData = action.payload;
+      state.isSignUped = true;
     },
   },
 });
@@ -44,7 +44,6 @@ export const sentLoginData = (data) => {
       },
       (onFail) => {
         console.log(onFail, "onFail");
-        // if(onFail)
       }
     );
   };
@@ -52,13 +51,14 @@ export const sentLoginData = (data) => {
 
 export const sentSignUpData = (data) => {
   return (dispatch) => {
+    console.log("A");
     postDataWithoutToken(
       apiRoutes.signup,
       JSON.stringify(data),
-      token,
       (onSuccess) => {
         console.log(onSuccess, "onSuccess");
-        dispatch(authActions.signup(onSuccess.data));
+        dispatch(authActions.signup());
+        return true;
       },
       (onFail) => {
         console.log(onFail, "onFail");

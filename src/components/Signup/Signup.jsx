@@ -1,19 +1,24 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
+import { sentSignUpData } from "../../store/auth-slice";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(email, password, confirmPassword);
     password !== confirmPassword
       ? setError("Password doesnot match")
       : setError("");
+    dispatch(sentSignUpData({ email, password, confirmPassword }));
+    navigate("/login");
   };
   return (
     <form className="form" onSubmit={submitHandler}>
